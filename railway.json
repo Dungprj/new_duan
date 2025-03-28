@@ -8,6 +8,6 @@
       }
     },
     "deploy": {
-     "startCommand": "php artisan serve --host=newduan-production.up.railway.app --port=8000"
+     "startCommand": "php artisan serve"
     }
   }
