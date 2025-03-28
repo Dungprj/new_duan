@@ -1,0 +1,87 @@
+    {{-- <div class="row">
+
+
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        <div class="col-md-12 mb-3 mt-3">
+            <div style="display: flex; justify-content: end;">
+                <a href="{{ route('users.create') }}" class="btn btn-primary "><i class="fa-solid fa-plus"></i> Thêm tài
+                    khoản</a>
+            </div>
+        </div>
+        <div class="col-md-12 mb-3">
+            <h1>Danh sách tài khoản</h1>
+
+            <!-- Hiển thị bảng -->
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="text-center">
+                        <th>#</th>
+                        <th>Tên</th>
+                        <th>Email</th>
+                        <th>Vai trò</th>
+                        <th>Trạng thái</th>
+                        <th>Ngày tạo</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+                    @foreach ($users as $key => $user)
+                        <tr class="text-center">
+                            <td>{{ $users->firstItem() + $key }}</td> <!-- Tính số thứ tự chính xác -->
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+
+
+
+                            {{-- implode => chuyển mảng thàng chuỗi --}}
+                            <td>
+                                <span class="badge bg-primary">{{ implode(', ', $user->getRoleNames()->toArray()) }}</span>
+                            </td>
+
+                            <td>
+
+                                <p class="{{ $user->status === 'active' ? 'badge bg-primary' : 'badge bg-secondary' }}">
+                                    {{ $user->status === 'active' ? 'Hoạt động' : 'Không hoạt động' }}
+                                </p>
+                            </td>
+
+                            <td>{{ $user->created_at ? $user->created_at->format('Y-m-d H:i:s') : 'N/A' }}</td>
+
+
+                            <td>
+                            <!-- Sửa -->
+                            <a href="{{ $user->email !== 'admin@gmail.com' ? route('users.edit', $user->id) : '#' }}"
+                               class="btn btn-success"
+                               @if ($user->email === 'admin@gmail.com') style="pointer-events: none; opacity: 0.6;" @endif>
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+
+                            <!-- Xóa -->
+                            <form action="{{ route('users.destroy', $user->id) }}" method="POST"
+                                  style="display:inline;"
+                                  @if ($user->email !== 'admin@gmail.com') style="pointer-events: none;" @endif>
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger"
+                                        @if ($user->email === 'admin@gmail.com') disabled @endif>
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </form>
+                        </td>
+
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+
+            <!-- Hiển thị phân trang và giữ lại tất cả tham số query, ngoại trừ page -->
+            {{ $users->links('pagination::bootstrap-5', ['nextText' => '<i class="fas fa-arrow-right"></i>', 'prevText' => '<i class="fas fa-arrow-left"></i>']) }}
+        </div>
+    </div> --}}

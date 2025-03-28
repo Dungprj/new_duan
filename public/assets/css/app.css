@@ -1,0 +1,171 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
+
+.navbar,
+footer {
+    background-color: #06d7a0 !important;
+    /* Màu tím đậm */
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+}
+
+.navbar-nav a {
+    font-size: 18px;
+    color: white;
+}
+
+/* Gạch dưới liên kết khi có lớp 'active' */
+.navbar-nav .active {
+    border-bottom: 1px #e8f0eb solid;
+    /* text-decoration: underline; */
+    background: transparent;
+    color: white !important;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    font-size: 23px;
+    font-weight: bold;
+    color: white !important;
+}
+
+.navbar-brand span {
+    font-family: "Arial", sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+
+
+/* -----------------content --------------- */
+.content {
+    padding-top: 100px;
+}
+
+/* -----------------dropdown user----------- */
+
+/* Tạo hiệu ứng cuộn mượt */
+.dropdown-menu {
+    max-height: 200px;
+    /* Giới hạn chiều cao của dropdown */
+    overflow-y: auto;
+    /* Thêm thanh cuộn dọc nếu cần */
+    scroll-behavior: smooth;
+    /* Cuộn mượt */
+    animation: dropdown-open 0.3s ease-out forwards;
+}
+
+/* Định nghĩa animation */
+@keyframes dropdown-open {
+    0% {
+        max-height: 0;
+        opacity: 0;
+    }
+
+    100% {
+        max-height: 200px;
+        /* Chiều cao tối đa của menu */
+        opacity: 1;
+    }
+}
+
+.nav-link:hover {
+    color: #008f7e;
+}
+
+/* -------------------search----------------- */
+
+
+
+
+#searchBox {
+    position: relative; /* Để chứa kết quả */
+    width: 500px;
+    display: none;
+}
+
+#searchResults {
+    position: absolute;
+    top: 100%; /* Hiển thị ngay dưới input */
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none; /* Mặc định ẩn */
+    padding-left:0 ;
+}
+
+#searchResults li {
+    padding: 10px;
+    cursor: pointer;
+    list-style: none;
+    transition: background 0.2s;
+}
+
+#searchResults li:hover {
+    background: #f0f0f0;
+}
+
+#searchResults a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+}
+
+#searchResults img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+
+@media screen and (max-width: 768px) {
+    #searchBox {
+        display: block;
+        margin-top: 10px;
+
+        width: 600px;
+    }
+    #searchToggle {
+        display: none;
+    }
+
+    .card-title-h2{
+        padding-top: 55px;
+    }
+
+    .content {
+        margin-top: 50px;
+    }
+}
